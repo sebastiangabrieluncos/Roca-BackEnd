@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { InscripcionesService } from './inscripciones.service.js';
 import { CreateInscripcioneDto } from './dto/create-inscripcione.dto.js';
 import { UpdateInscripcioneDto } from './dto/update-inscripcione.dto.js';
@@ -23,7 +31,10 @@ export class InscripcionesController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateInscripcioneDto: UpdateInscripcioneDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateInscripcioneDto: UpdateInscripcioneDto,
+  ) {
     return this.inscripcionesService.update(+id, updateInscripcioneDto);
   }
 
