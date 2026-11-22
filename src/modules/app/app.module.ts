@@ -8,7 +8,7 @@ import { AuthModule } from '../auth/auth.module.js';
 import { PrismaModule } from '../prisma/prisma.module.js';
 
 @Module({
-    imports: [
+  imports: [
     PrismaModule,
     UsuariosModule,
     NoticiasModule,
