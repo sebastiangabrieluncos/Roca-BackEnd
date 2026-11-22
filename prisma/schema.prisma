@@ -1,0 +1,262 @@
+generator client {
+  provider        = "prisma-client"
+  output          = "../src/generated/prisma"
+  previewFeatures = ["partialIndexes"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model alumno {
+  id                      Int           @id @default(autoincrement())
+  apellido                String        @db.VarChar(60)
+  nombres                 String        @db.VarChar(60)
+  dni                     String        @unique @db.VarChar(8)
+  cuil                    String?       @unique @db.VarChar(11)
+  sexo                    sexo
+  fecha_nacimiento        DateTime      @db.Date
+  acta_nacimiento         String?       @db.VarChar(30)
+  provincia_nacimiento_id Int?          @db.SmallInt
+  lugar_nacimiento        String?       @db.VarChar(100)
+  domicilio_calle         String        @db.VarChar(80)
+  domicilio_numero        String        @db.VarChar(5)
+  domicilio_piso_depto    String?       @db.VarChar(20)
+  domicilio_barrio        String?       @db.VarChar(60)
+  provincia               provincia?    @relation(fields: [provincia_nacimiento_id], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  alumno_tutor            alumno_tutor?
+  inscripcion             inscripcion[]
+
+  @@index([apellido, nombres], map: "idx_alumno_apellido")
+}
+
+model alumno_tutor {
+  alumno_id      Int           @unique(map: "uq_un_responsable", where: raw("es_responsable"))
+  tutor_id       Int
+  vinculo        vinculo_tutor
+  es_responsable Boolean       @default(false)
+  alumno         alumno        @relation(fields: [alumno_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  tutor          tutor         @relation(fields: [tutor_id], references: [id], onUpdate: NoAction)
+
+  @@id([alumno_id, tutor_id])
+  @@unique([alumno_id, vinculo], map: "uq_alumno_vinculo")
+}
+
+model categoria_noticia {
+  id      Int       @id @default(autoincrement()) @db.SmallInt
+  nombre  String    @unique @db.VarChar(40)
+  noticia noticia[]
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model codigo_recuperacion {
+  id          Int       @id @default(autoincrement())
+  usuario_id  Int
+  codigo_hash String    @db.VarChar(255)
+  vence_el    DateTime  @db.Timestamptz(6)
+  intentos    Int       @default(0) @db.SmallInt
+  usado_el    DateTime? @db.Timestamptz(6)
+  creado_el   DateTime  @default(now()) @db.Timestamptz(6)
+  usuario     usuario   @relation(fields: [usuario_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model contacto_emergencia {
+  id                   Int         @id @default(autoincrement())
+  inscripcion_id       Int
+  apellido             String      @db.VarChar(60)
+  nombres              String      @db.VarChar(60)
+  parentesco           String      @db.VarChar(30)
+  telefono             String      @db.VarChar(20)
+  telefono_alternativo String?     @db.VarChar(20)
+  orden                Int         @db.SmallInt
+  inscripcion          inscripcion @relation(fields: [inscripcion_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([inscripcion_id, orden], map: "uq_contacto_orden")
+}
+
+model grado {
+  id          Int           @id @default(autoincrement()) @db.SmallInt
+  nombre      String        @unique @db.VarChar(10)
+  orden       Int           @unique @db.SmallInt
+  inscripcion inscripcion[]
+  usuario     usuario[]
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model inscripcion {
+  id                  Int                   @id @default(autoincrement())
+  alumno_id           Int
+  grado_id            Int                   @db.SmallInt
+  ciclo_lectivo       Int                   @db.SmallInt
+  repitente           Boolean
+  escuela_origen      String?               @db.VarChar(80)
+  cantidad_hermanos   Int?                  @db.SmallInt
+  cargada_por_id      Int
+  creada_el           DateTime              @default(now()) @db.Timestamptz(6)
+  actualizada_por_id  Int?
+  actualizada_el      DateTime              @default(now()) @db.Timestamptz(6)
+  contacto_emergencia contacto_emergencia[]
+  actualizada_por     usuario?              @relation("inscripcion_actualizada_por_idTousuario", fields: [actualizada_por_id], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  alumno              alumno                @relation(fields: [alumno_id], references: [id], onUpdate: NoAction)
+  cargada_por         usuario               @relation("inscripcion_cargada_por_idTousuario", fields: [cargada_por_id], references: [id], onUpdate: NoAction)
+  grado               grado                 @relation(fields: [grado_id], references: [id], onUpdate: NoAction)
+  vivienda            vivienda?
+
+  @@unique([alumno_id, ciclo_lectivo], map: "uq_alumno_ciclo")
+  @@index([ciclo_lectivo, grado_id], map: "idx_inscripcion_ciclo")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model noticia {
+  id                Int               @id @default(autoincrement())
+  titulo            String            @db.VarChar(100)
+  descripcion       String            @db.VarChar(200)
+  contenido         String
+  imagen_url        String?           @db.VarChar(500)
+  categoria_id      Int               @db.SmallInt
+  autor_id          Int
+  publicada         Boolean           @default(false)
+  fecha             DateTime          @default(now()) @db.Timestamptz(6)
+  actualizada_el    DateTime          @default(now()) @db.Timestamptz(6)
+  usuario           usuario           @relation(fields: [autor_id], references: [id], onUpdate: NoAction)
+  categoria_noticia categoria_noticia @relation(fields: [categoria_id], references: [id], onUpdate: NoAction)
+
+  @@index([publicada, fecha(sort: Desc)], map: "idx_noticia_fecha")
+}
+
+model provincia {
+  id     Int      @id @db.SmallInt
+  nombre String   @unique @db.VarChar(80)
+  alumno alumno[]
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model registro_acceso {
+  id                BigInt      @id @default(autoincrement())
+  fecha             DateTime    @default(now()) @db.Timestamptz(6)
+  tipo_evento_id    Int         @db.SmallInt
+  usuario_id        Int?
+  usuario_ingresado String?     @db.VarChar(100)
+  detalle           String?     @db.VarChar(255)
+  tipo_evento       tipo_evento @relation(fields: [tipo_evento_id], references: [id], onUpdate: NoAction)
+  usuario           usuario?    @relation(fields: [usuario_id], references: [id], onUpdate: NoAction)
+
+  @@index([fecha(sort: Desc)], map: "idx_registro_fecha")
+  @@index([usuario_id, fecha(sort: Desc)], map: "idx_registro_usuario")
+}
+
+model rol {
+  id      Int       @id @default(autoincrement()) @db.SmallInt
+  codigo  String    @unique @db.VarChar(20)
+  nombre  String    @db.VarChar(40)
+  usuario usuario[]
+}
+
+model tipo_evento {
+  id              Int               @id @default(autoincrement()) @db.SmallInt
+  codigo          String            @unique @db.VarChar(30)
+  nombre          String            @db.VarChar(60)
+  registro_acceso registro_acceso[]
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model tutor {
+  id                   Int               @id @default(autoincrement())
+  apellido             String?           @db.VarChar(60)
+  nombres              String?           @db.VarChar(60)
+  dni                  String?           @unique @db.VarChar(8)
+  cuil                 String?           @unique @db.VarChar(11)
+  ocupacion            String?           @db.VarChar(80)
+  caracter             caracter_laboral?
+  nivel_estudio        nivel_estudio?
+  estado_estudio       estado_estudio?
+  telefono             String?           @db.VarChar(20)
+  telefono_alternativo String?           @db.VarChar(20)
+  mail                 String?           @db.VarChar(100)
+  domicilio_calle      String?           @db.VarChar(80)
+  domicilio_numero     String?           @db.VarChar(5)
+  domicilio_piso_depto String?           @db.VarChar(20)
+  domicilio_barrio     String?           @db.VarChar(60)
+  plan_social          plan_social?
+  alumno_tutor         alumno_tutor[]
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model usuario {
+  id                         Int                   @id @default(autoincrement())
+  nombres                    String                @db.VarChar(60)
+  apellido                   String                @db.VarChar(60)
+  usuario                    String                @unique @db.VarChar(20)
+  mail                       String                @unique @db.VarChar(100)
+  password_hash              String                @db.VarChar(255)
+  rol_id                     Int                   @db.SmallInt
+  grado_id                   Int?                  @db.SmallInt
+  activo                     Boolean               @default(true)
+  creado_el                  DateTime              @default(now()) @db.Timestamptz(6)
+  codigo_recuperacion        codigo_recuperacion[]
+  inscripciones_actualizadas inscripcion[]         @relation("inscripcion_actualizada_por_idTousuario")
+  inscripciones_cargadas     inscripcion[]         @relation("inscripcion_cargada_por_idTousuario")
+  noticia                    noticia[]
+  registro_acceso            registro_acceso[]
+  grado                      grado?                @relation(fields: [grado_id], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  rol                        rol                   @relation(fields: [rol_id], references: [id], onUpdate: NoAction)
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model vivienda {
+  inscripcion_id    Int               @id
+  personas_en_casa  Int               @db.SmallInt
+  tenencia          tenencia_vivienda
+  tipo              tipo_vivienda
+  distancia_cuadras Int?              @db.SmallInt
+  inscripcion       inscripcion       @relation(fields: [inscripcion_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+enum caracter_laboral {
+  permanente
+  contratado
+  independiente
+}
+
+enum estado_estudio {
+  completo
+  incompleto
+}
+
+enum nivel_estudio {
+  primario
+  secundario
+  terciario
+  universitario
+}
+
+enum plan_social {
+  no
+  asignacion_universal
+  otro_plan_social
+}
+
+enum sexo {
+  femenino
+  masculino
+  x
+}
+
+enum tenencia_vivienda {
+  propia
+  alquilada
+  otros
+}
+
+enum tipo_vivienda {
+  material
+  prefabricada
+  otros
+}
+
+enum vinculo_tutor {
+  padre
+  madre
+}
