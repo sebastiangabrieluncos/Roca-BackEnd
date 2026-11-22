@@ -86,23 +86,23 @@ model grado {
 
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model inscripcion {
-  id                                              Int                   @id @default(autoincrement())
-  alumno_id                                       Int
-  grado_id                                        Int                   @db.SmallInt
-  ciclo_lectivo                                   Int                   @db.SmallInt
-  repitente                                       Boolean
-  escuela_origen                                  String?               @db.VarChar(80)
-  cantidad_hermanos                               Int?                  @db.SmallInt
-  cargada_por_id                                  Int
-  creada_el                                       DateTime              @default(now()) @db.Timestamptz(6)
-  actualizada_por_id                              Int?
-  actualizada_el                                  DateTime              @default(now()) @db.Timestamptz(6)
-  contacto_emergencia                             contacto_emergencia[]
-  usuario_inscripcion_actualizada_por_idTousuario usuario?              @relation("inscripcion_actualizada_por_idTousuario", fields: [actualizada_por_id], references: [id], onDelete: Restrict, onUpdate: NoAction)
-  alumno                                          alumno                @relation(fields: [alumno_id], references: [id], onUpdate: NoAction)
-  usuario_inscripcion_cargada_por_idTousuario     usuario               @relation("inscripcion_cargada_por_idTousuario", fields: [cargada_por_id], references: [id], onUpdate: NoAction)
-  grado                                           grado                 @relation(fields: [grado_id], references: [id], onUpdate: NoAction)
-  vivienda                                        vivienda?
+  id                  Int                   @id @default(autoincrement())
+  alumno_id           Int
+  grado_id            Int                   @db.SmallInt
+  ciclo_lectivo       Int                   @db.SmallInt
+  repitente           Boolean
+  escuela_origen      String?               @db.VarChar(80)
+  cantidad_hermanos   Int?                  @db.SmallInt
+  cargada_por_id      Int
+  creada_el           DateTime              @default(now()) @db.Timestamptz(6)
+  actualizada_por_id  Int?
+  actualizada_el      DateTime              @default(now()) @db.Timestamptz(6)
+  contacto_emergencia contacto_emergencia[]
+  actualizada_por     usuario?              @relation("inscripcion_actualizada_por_idTousuario", fields: [actualizada_por_id], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  alumno              alumno                @relation(fields: [alumno_id], references: [id], onUpdate: NoAction)
+  cargada_por         usuario               @relation("inscripcion_cargada_por_idTousuario", fields: [cargada_por_id], references: [id], onUpdate: NoAction)
+  grado               grado                 @relation(fields: [grado_id], references: [id], onUpdate: NoAction)
+  vivienda            vivienda?
 
   @@unique([alumno_id, ciclo_lectivo], map: "uq_alumno_ciclo")
   @@index([ciclo_lectivo, grado_id], map: "idx_inscripcion_ciclo")
@@ -185,23 +185,23 @@ model tutor {
 
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model usuario {
-  id                                                  Int                   @id @default(autoincrement())
-  nombres                                             String                @db.VarChar(60)
-  apellido                                            String                @db.VarChar(60)
-  usuario                                             String                @unique @db.VarChar(20)
-  mail                                                String                @unique @db.VarChar(100)
-  password_hash                                       String                @db.VarChar(255)
-  rol_id                                              Int                   @db.SmallInt
-  grado_id                                            Int?                  @db.SmallInt
-  activo                                              Boolean               @default(true)
-  creado_el                                           DateTime              @default(now()) @db.Timestamptz(6)
-  codigo_recuperacion                                 codigo_recuperacion[]
-  inscripcion_inscripcion_actualizada_por_idTousuario inscripcion[]         @relation("inscripcion_actualizada_por_idTousuario")
-  inscripcion_inscripcion_cargada_por_idTousuario     inscripcion[]         @relation("inscripcion_cargada_por_idTousuario")
-  noticia                                             noticia[]
-  registro_acceso                                     registro_acceso[]
-  grado                                               grado?                @relation(fields: [grado_id], references: [id], onDelete: Restrict, onUpdate: NoAction)
-  rol                                                 rol                   @relation(fields: [rol_id], references: [id], onUpdate: NoAction)
+  id                         Int                   @id @default(autoincrement())
+  nombres                    String                @db.VarChar(60)
+  apellido                   String                @db.VarChar(60)
+  usuario                    String                @unique @db.VarChar(20)
+  mail                       String                @unique @db.VarChar(100)
+  password_hash              String                @db.VarChar(255)
+  rol_id                     Int                   @db.SmallInt
+  grado_id                   Int?                  @db.SmallInt
+  activo                     Boolean               @default(true)
+  creado_el                  DateTime              @default(now()) @db.Timestamptz(6)
+  codigo_recuperacion        codigo_recuperacion[]
+  inscripciones_actualizadas inscripcion[]         @relation("inscripcion_actualizada_por_idTousuario")
+  inscripciones_cargadas     inscripcion[]         @relation("inscripcion_cargada_por_idTousuario")
+  noticia                    noticia[]
+  registro_acceso            registro_acceso[]
+  grado                      grado?                @relation(fields: [grado_id], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  rol                        rol                   @relation(fields: [rol_id], references: [id], onUpdate: NoAction)
 }
 
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
