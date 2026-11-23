@@ -1,126 +1,127 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Roca · Back End
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+API del sistema de inscripción de alumnos y del portal de noticias de la Escuela Presidente Julio A. Roca (San Miguel de Tucumán). Trabajo Final Integrador de la Tecnicatura Universitaria en Programación, UTN FRT.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+El front está en [Roca-FrontEnd](https://github.com/nachovalverde/Roca-FrontEnd) y publicado en [roca-front-end.vercel.app](https://roca-front-end.vercel.app).
 
-## Description
+## Tecnologías
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- NestJS 12 y TypeScript
+- PostgreSQL
+- Prisma 7 con @prisma/adapter-pg
+- class-validator y class-transformer
+- JWT y bcrypt (TP 12)
 
-## Project setup
+## Requisitos
 
-```bash
-$ npm install
-```
+- Node.js 20 o superior
+- PostgreSQL y pgAdmin
+- Git
 
-## Compile and run the project
+## Instalación
 
-```bash
-# development
-$ npm run start
+bash
+git clone https://github.com/sebastiangabrieluncos/Roca-BackEnd.git
+cd Roca-BackEnd
+npm install
 
-# watch mode
-$ npm run start:dev
 
-# production mode
-$ npm run start:prod
-```
+Copiar .env.example como .env y completar la contraseña de PostgreSQL:
 
-## Run tests
+| Variable | Para qué |
+| --- | --- |
+| PORT | Puerto de la API (4000) |
+| DATABASE_URL | Conexión a PostgreSQL |
+| API_BASE_URL | Dirección base de la API |
 
-```bash
-# unit tests
-$ npm run test
+## Base de datos
 
-# e2e tests
-$ npm run test:e2e
+La base roca_db tiene 15 tablas en tercera forma normal. La estructura está en prisma/migrations/0_init/migration.sql y los datos de prueba en prisma/datos_demo.sql. El diagrama está en docs/der-roca.png.
 
-# test coverage
-$ npm run test:cov
-```
+1. En pgAdmin, crear una base vacía llamada roca_db.
+2. Crear las tablas, los catálogos y las cuentas de prueba:
 
-## Deployment
+   bash
+   npx prisma migrate deploy
+   npx prisma generate
+   
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+3. En la Herramienta de consulta de roca_db, ejecutar prisma/datos_demo.sql.
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+Si la base se creó con los scripts SQL originales, en lugar de migrate deploy se corre una sola vez npx prisma migrate resolve --applied 0_init.
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
+## Cómo levantar la API
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+bash
+npm run start:dev
 
-## Observability
 
-In production applications, observability is essential for understanding how your system behaves, detecting issues early, and maintaining reliable performance.
+Queda en http://localhost:4000.
 
-[NestJS Observe](https://observe.nestjs.com) automatically instruments your NestJS application, giving you deep visibility into your system with minimal setup:
+| Script | Qué hace |
+| --- | --- |
+| npm run start:dev | Levanta la API y la reinicia con cada cambio |
+| npm run build | Compila a dist |
+| npm run lint | Revisa el código con oxlint |
+| npm run format | Formatea el código con Prettier |
 
-- **Distributed tracing:** Follow requests across services and understand how they flow through your system.
-- **Waterfall analysis:** Visualize request execution and identify slow operations, bottlenecks, and unexpected delays.
-- **Performance analysis:** Analyze application performance in real time and quickly pinpoint areas that need optimization.
-- **Metrics:** Track key application and infrastructure metrics to understand system health and performance trends.
-- **Logging:** Centralize and correlate logs with traces and other telemetry to make debugging easier.
-- **Error tracking:** Detect errors quickly and investigate their root causes with the surrounding context.
-- **SLA monitoring:** Track service-level objectives and identify when your application is approaching or exceeding defined thresholds.
-- **Alarms and alerts:** Set up alerts for critical errors, performance degradation, SLA violations, and other anomalies so your team can react quickly.
+## Estructura
 
-This project is already instrumented. To connect it, run this and approve the code it prints at [observe.nestjs.com/link](https://observe.nestjs.com/link) - signing up for free if you have no account:
 
-```bash
-$ npx @nestjs/observe link
-```
+prisma/
+  schema.prisma       modelos leídos de la base
+  migrations/         historial de la estructura
+  datos_demo.sql      datos de prueba
+src/
+  main.ts
+  modules/
+    app/              módulo raíz
+    prisma/           conexión a la base
+    catalogos/        listas fijas de los formularios
+    inscripciones/
+    noticias/
+    registro-accesos/
+    usuarios/
+    auth/
+  generated/prisma/   cliente de Prisma (no se sube)
+postman/              colección para probar la API
+docs/                 diagrama de la base
 
-It writes the app key and secret into `.env` and makes every `nest start` script (`start`, `start:dev`, `start:debug`) load it. In production, set `OBSERVE_APP_KEY` and `OBSERVE_APP_SECRET` in the environment instead.
 
-Or do it by hand: create an application and an API key at [observe.nestjs.com](https://observe.nestjs.com), and set the pair as `OBSERVE_APP_KEY` and `OBSERVE_APP_SECRET` in the environment the app runs in.
+## Módulos
 
-The free plan needs no payment details and covers 300,000 events a month. You can also browse the [live demo](https://www.observe-demo.nestjs.com/dashboard) first - the whole dashboard over a busy service's data, with nothing to install.
+| Módulo | Qué hace |
+| --- | --- |
+| inscripciones | Ficha completa del alumno: alta, listado con filtros, detalle, edición y baja |
+| catalogos | Grados, roles, provincias, categorías y tipos de evento, de solo lectura |
+| noticias | Alta, edición, publicación y baja de noticias del portal |
+| registro-accesos | Ingresos, intentos fallidos, salidas y cambios de cuentas |
+| usuarios | Cuentas de la escuela, con contraseñas hasheadas |
+| auth | Inicio de sesión con JWT |
+| prisma | Conexión a PostgreSQL para todos los módulos |
+| app | Módulo raíz |
 
-## Resources
+## Cuentas de prueba
 
-Check out a few resources that may come in handy when working with NestJS:
+| Usuario | Contraseña | Rol |
+| --- | --- | --- |
+| admin | admin123 | Vicedirección |
+| secretario | secretario123 | Secretaría |
+| maestra1 | maestra123 | Maestra de 1° |
+| hcarrizo | maestro123 | Maestro con la cuenta desactivada |
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Auto-instrument your application with [NestJS Observe](https://observe.nestjs.com). Distributed tracing, metrics, and logging made easy. Error tracking and performance monitoring for your NestJS applications.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## Postman
 
-## Support
+Importar postman/Roca-API.postman_collection.json. La variable baseUrl apunta a http://localhost:4000.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Cómo trabajamos
 
-## Stay in touch
+- main tiene lo entregado al cierre de cada TP; dev es la rama de integración y la rama por defecto.
+- Una rama por tarea, desde dev: feature/, fix/, refactor/ o docs/.
+- Commits con el formato tipo: qué cambia y para qué.
+- Todo entra a dev por Pull Request, con la revisión del otro integrante.
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Integrantes
 
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+- Sebastián Uncos: inscripciones, catálogos y base de datos.
+- José Ignacio Valverde: portal, noticias, usuarios y autenticación.
