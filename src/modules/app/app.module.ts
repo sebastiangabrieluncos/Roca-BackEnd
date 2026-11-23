@@ -6,6 +6,7 @@ import { NoticiasModule } from '../noticias/noticias.module.js';
 import { InscripcionesModule } from '../inscripciones/inscripciones.module.js';
 import { AuthModule } from '../auth/auth.module.js';
 import { RegistroAccesosModule } from '../registro-accesos/registro-accesos.module.js';
+import { CatalogosModule } from '../catalogos/catalogos.module.js';
 import { PrismaModule } from '../prisma/prisma.module.js';
 
 @Module({
@@ -16,6 +17,7 @@ import { PrismaModule } from '../prisma/prisma.module.js';
     InscripcionesModule,
     AuthModule,
     RegistroAccesosModule,
+    CatalogosModule,
   ],
   controllers: [AppController],
   providers: [AppService],
