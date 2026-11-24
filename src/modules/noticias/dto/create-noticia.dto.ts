@@ -11,8 +11,7 @@ import {
 import { Recortar } from '../../../common/decorators/recortar.decorator.js';
 
 // Una noticia del portal, con las mismas reglas que validarNoticia.js del front.
-// En cada campo, los decoradores se revisan de abajo hacia arriba:
-// el de abajo de todo controla que el dato venga y sea del tipo correcto.
+
 export class CreateNoticiaDto {
   @Recortar()
   @Length(5, 100, { message: 'El título debe tener entre 5 y 100 caracteres' })
