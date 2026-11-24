@@ -6,7 +6,7 @@ import { AppModule } from './modules/app/app.module.js';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-    // Valida el body de cada pedido con los decoradores de los DTO 
+  // Valida el body de cada pedido con los decoradores de los DTO
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true, // descarta los campos que el DTO no declara
