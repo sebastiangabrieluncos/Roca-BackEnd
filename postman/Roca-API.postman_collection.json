@@ -585,7 +585,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{}",
+              "raw": "{\r\n  \"grado_id\": 2,\r\n  \"ciclo_lectivo\": 2026,\r\n  \"repitente\": false,\r\n  \"cantidad_hermanos\": 1,\r\n  \"cargada_por_id\": 3,\r\n  \"responsable\": \"madre\",\r\n  \"alumno\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Valentina\",\r\n    \"dni\": \"56123456\",\r\n    \"cuil\": \"27561234561\",\r\n    \"sexo\": \"femenino\",\r\n    \"fecha_nacimiento\": \"2020-03-14\",\r\n    \"provincia_nacimiento_id\": 90,\r\n    \"lugar_nacimiento\": \"San Miguel de Tucumán\",\r\n    \"domicilio_calle\": \"Av. Mate de Luna\",\r\n    \"domicilio_numero\": \"2450\",\r\n    \"domicilio_barrio\": \"Centro\"\r\n  },\r\n  \"madre\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Laura\",\r\n    \"dni\": \"30123456\",\r\n    \"telefono\": \"381 555-1234\",\r\n    \"mail\": \"laura.gomez@gmail.com\"\r\n  },\r\n  \"vivienda\": {\r\n    \"personas_en_casa\": 4,\r\n    \"tenencia\": \"alquilada\",\r\n    \"tipo\": \"material\",\r\n    \"distancia_cuadras\": 8\r\n  },\r\n  \"contactos\": [\r\n    {\r\n      \"apellido\": \"Pérez\",\r\n      \"nombres\": \"Rosa\",\r\n      \"parentesco\": \"Abuela\",\r\n      \"telefono\": \"3815556789\"\r\n    }\r\n  ]\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -662,6 +662,846 @@
               ],
               "cookie": [],
               "body": "This action adds a new inscripcione"
+            },
+            {
+              "name": "201-nueva-inscripciones",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"grado_id\": 2,\r\n  \"ciclo_lectivo\": 2026,\r\n  \"repitente\": false,\r\n  \"cantidad_hermanos\": 1,\r\n  \"cargada_por_id\": 3,\r\n  \"responsable\": \"madre\",\r\n  \"alumno\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Valentina\",\r\n    \"dni\": \"56123456\",\r\n    \"cuil\": \"27561234561\",\r\n    \"sexo\": \"femenino\",\r\n    \"fecha_nacimiento\": \"2020-03-14\",\r\n    \"provincia_nacimiento_id\": 90,\r\n    \"lugar_nacimiento\": \"San Miguel de Tucumán\",\r\n    \"domicilio_calle\": \"Av. Mate de Luna\",\r\n    \"domicilio_numero\": \"2450\",\r\n    \"domicilio_barrio\": \"Centro\"\r\n  },\r\n  \"madre\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Laura\",\r\n    \"dni\": \"30123456\",\r\n    \"telefono\": \"381 555-1234\",\r\n    \"mail\": \"laura.gomez@gmail.com\"\r\n  },\r\n  \"vivienda\": {\r\n    \"personas_en_casa\": 4,\r\n    \"tenencia\": \"alquilada\",\r\n    \"tipo\": \"material\",\r\n    \"distancia_cuadras\": 8\r\n  },\r\n  \"contactos\": [\r\n    {\r\n      \"apellido\": \"Pérez\",\r\n      \"nombres\": \"Rosa\",\r\n      \"parentesco\": \"Abuela\",\r\n      \"telefono\": \"3815556789\"\r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/inscripciones",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "inscripciones"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "html",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/html; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "34"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"22-QuTaDrkPji6ztfoO4It+mpOoB08\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 02:38:51 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "This action adds a new inscripcion"
+            },
+            {
+              "name": "400-Falta el apellido",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"grado_id\": 2,\r\n  \"ciclo_lectivo\": 2026,\r\n  \"repitente\": false,\r\n  \"cantidad_hermanos\": 1,\r\n  \"cargada_por_id\": 3,\r\n  \"responsable\": \"madre\",\r\n  \"alumno\": {\r\n    \r\n    \"nombres\": \"Valentina\",\r\n    \"dni\": \"56123456\",\r\n    \"cuil\": \"27561234561\",\r\n    \"sexo\": \"femenino\",\r\n    \"fecha_nacimiento\": \"2020-03-14\",\r\n    \"provincia_nacimiento_id\": 90,\r\n    \"lugar_nacimiento\": \"San Miguel de Tucumán\",\r\n    \"domicilio_calle\": \"Av. Mate de Luna\",\r\n    \"domicilio_numero\": \"2450\",\r\n    \"domicilio_barrio\": \"Centro\"\r\n  },\r\n  \"madre\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Laura\",\r\n    \"dni\": \"30123456\",\r\n    \"telefono\": \"381 555-1234\",\r\n    \"mail\": \"laura.gomez@gmail.com\"\r\n  },\r\n  \"vivienda\": {\r\n    \"personas_en_casa\": 4,\r\n    \"tenencia\": \"alquilada\",\r\n    \"tipo\": \"material\",\r\n    \"distancia_cuadras\": 8\r\n  },\r\n  \"contactos\": [\r\n    {\r\n      \"apellido\": \"Pérez\",\r\n      \"nombres\": \"Rosa\",\r\n      \"parentesco\": \"Abuela\",\r\n      \"telefono\": \"3815556789\"\r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/inscripciones",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "inscripciones"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "88"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"58-7FVUIkJ5FNn+txfgkrZBZHzeWr8\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 02:43:50 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": [\n    \"alumno.El apellido es obligatorio\"\n  ],\n  \"error\": \"Bad Request\",\n  \"statusCode\": 400\n}"
+            },
+            {
+              "name": "400-Apellido con espacios",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"grado_id\": 2,\r\n  \"ciclo_lectivo\": 2026,\r\n  \"repitente\": false,\r\n  \"cantidad_hermanos\": 1,\r\n  \"cargada_por_id\": 3,\r\n  \"responsable\": \"madre\",\r\n  \"alumno\": {\r\n    \"apellido\": \" a \",\r\n    \"nombres\": \"Valentina\",\r\n    \"dni\": \"56123456\",\r\n    \"cuil\": \"27561234561\",\r\n    \"sexo\": \"femenino\",\r\n    \"fecha_nacimiento\": \"2020-03-14\",\r\n    \"provincia_nacimiento_id\": 90,\r\n    \"lugar_nacimiento\": \"San Miguel de Tucumán\",\r\n    \"domicilio_calle\": \"Av. Mate de Luna\",\r\n    \"domicilio_numero\": \"2450\",\r\n    \"domicilio_barrio\": \"Centro\"\r\n  },\r\n  \"madre\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Laura\",\r\n    \"dni\": \"30123456\",\r\n    \"telefono\": \"381 555-1234\",\r\n    \"mail\": \"laura.gomez@gmail.com\"\r\n  },\r\n  \"vivienda\": {\r\n    \"personas_en_casa\": 4,\r\n    \"tenencia\": \"alquilada\",\r\n    \"tipo\": \"material\",\r\n    \"distancia_cuadras\": 8\r\n  },\r\n  \"contactos\": [\r\n    {\r\n      \"apellido\": \"Pérez\",\r\n      \"nombres\": \"Rosa\",\r\n      \"parentesco\": \"Abuela\",\r\n      \"telefono\": \"3815556789\"\r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/inscripciones",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "inscripciones"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "107"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"6b-a9rrqJ5yQyrgeUYdc1A4ske+EnI\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 02:45:21 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": [\n    \"alumno.El apellido tiene que tener al menos 2 letras\"\n  ],\n  \"error\": \"Bad Request\",\n  \"statusCode\": 400\n}"
+            },
+            {
+              "name": "400-DNI con letras",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"grado_id\": 2,\r\n  \"ciclo_lectivo\": 2026,\r\n  \"repitente\": false,\r\n  \"cantidad_hermanos\": 1,\r\n  \"cargada_por_id\": 3,\r\n  \"responsable\": \"madre\",\r\n  \"alumno\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Valentina\",\r\n    \"dni\": \"12A45678\",\r\n    \"cuil\": \"27561234561\",\r\n    \"sexo\": \"femenino\",\r\n    \"fecha_nacimiento\": \"2020-03-14\",\r\n    \"provincia_nacimiento_id\": 90,\r\n    \"lugar_nacimiento\": \"San Miguel de Tucumán\",\r\n    \"domicilio_calle\": \"Av. Mate de Luna\",\r\n    \"domicilio_numero\": \"2450\",\r\n    \"domicilio_barrio\": \"Centro\"\r\n  },\r\n  \"madre\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Laura\",\r\n    \"dni\": \"30123456\",\r\n    \"telefono\": \"381 555-1234\",\r\n    \"mail\": \"laura.gomez@gmail.com\"\r\n  },\r\n  \"vivienda\": {\r\n    \"personas_en_casa\": 4,\r\n    \"tenencia\": \"alquilada\",\r\n    \"tipo\": \"material\",\r\n    \"distancia_cuadras\": 8\r\n  },\r\n  \"contactos\": [\r\n    {\r\n      \"apellido\": \"Pérez\",\r\n      \"nombres\": \"Rosa\",\r\n      \"parentesco\": \"Abuela\",\r\n      \"telefono\": \"3815556789\"\r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/inscripciones",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "inscripciones"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "95"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"5f-2BrhE0OH1hpPujN35QrcnLj1doY\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 02:46:25 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": [\n    \"alumno.Ingresá un DNI de 7 u 8 dígitos\"\n  ],\n  \"error\": \"Bad Request\",\n  \"statusCode\": 400\n}"
+            },
+            {
+              "name": "400-Sexo fuera de la lista",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"grado_id\": 2,\r\n  \"ciclo_lectivo\": 2026,\r\n  \"repitente\": false,\r\n  \"cantidad_hermanos\": 1,\r\n  \"cargada_por_id\": 3,\r\n  \"responsable\": \"madre\",\r\n  \"alumno\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Valentina\",\r\n    \"dni\": \"56123456\",\r\n    \"cuil\": \"27561234561\",\r\n    \"sexo\": \"binario\",\r\n    \"fecha_nacimiento\": \"2020-03-14\",\r\n    \"provincia_nacimiento_id\": 90,\r\n    \"lugar_nacimiento\": \"San Miguel de Tucumán\",\r\n    \"domicilio_calle\": \"Av. Mate de Luna\",\r\n    \"domicilio_numero\": \"2450\",\r\n    \"domicilio_barrio\": \"Centro\"\r\n  },\r\n  \"madre\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Laura\",\r\n    \"dni\": \"30123456\",\r\n    \"telefono\": \"381 555-1234\",\r\n    \"mail\": \"laura.gomez@gmail.com\"\r\n  },\r\n  \"vivienda\": {\r\n    \"personas_en_casa\": 4,\r\n    \"tenencia\": \"alquilada\",\r\n    \"tipo\": \"material\",\r\n    \"distancia_cuadras\": 8\r\n  },\r\n  \"contactos\": [\r\n    {\r\n      \"apellido\": \"Pérez\",\r\n      \"nombres\": \"Rosa\",\r\n      \"parentesco\": \"Abuela\",\r\n      \"telefono\": \"3815556789\"\r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/inscripciones",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "inscripciones"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "107"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"6b-biLH3fwTCNngfVYqts/vPV2Cv7c\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 02:49:16 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": [\n    \"alumno.El sexo tiene que ser femenino, masculino o x\"\n  ],\n  \"error\": \"Bad Request\",\n  \"statusCode\": 400\n}"
+            },
+            {
+              "name": "400-Fecha que no existe",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"grado_id\": 2,\r\n  \"ciclo_lectivo\": 2026,\r\n  \"repitente\": false,\r\n  \"cantidad_hermanos\": 1,\r\n  \"cargada_por_id\": 3,\r\n  \"responsable\": \"madre\",\r\n  \"alumno\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Valentina\",\r\n    \"dni\": \"56123456\",\r\n    \"cuil\": \"27561234561\",\r\n    \"sexo\": \"femenino\",\r\n    \"fecha_nacimiento\": \"2020-02-30\",\r\n    \"provincia_nacimiento_id\": 90,\r\n    \"lugar_nacimiento\": \"San Miguel de Tucumán\",\r\n    \"domicilio_calle\": \"Av. Mate de Luna\",\r\n    \"domicilio_numero\": \"2450\",\r\n    \"domicilio_barrio\": \"Centro\"\r\n  },\r\n  \"madre\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Laura\",\r\n    \"dni\": \"30123456\",\r\n    \"telefono\": \"381 555-1234\",\r\n    \"mail\": \"laura.gomez@gmail.com\"\r\n  },\r\n  \"vivienda\": {\r\n    \"personas_en_casa\": 4,\r\n    \"tenencia\": \"alquilada\",\r\n    \"tipo\": \"material\",\r\n    \"distancia_cuadras\": 8\r\n  },\r\n  \"contactos\": [\r\n    {\r\n      \"apellido\": \"Pérez\",\r\n      \"nombres\": \"Rosa\",\r\n      \"parentesco\": \"Abuela\",\r\n      \"telefono\": \"3815556789\"\r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/inscripciones",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "inscripciones"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "115"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"73-ZbBqah/N2R47D/PeIe5oyDZ0B8I\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 02:50:27 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": [\n    \"alumno.Ingresá una fecha de nacimiento válida (AAAA-MM-DD)\"\n  ],\n  \"error\": \"Bad Request\",\n  \"statusCode\": 400\n}"
+            },
+            {
+              "name": "400-Repitente como texto",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"grado_id\": 2,\r\n  \"ciclo_lectivo\": 2026,\r\n  \"repitente\": \"no\",\r\n  \"cantidad_hermanos\": 1,\r\n  \"cargada_por_id\": 3,\r\n  \"responsable\": \"madre\",\r\n  \"alumno\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Valentina\",\r\n    \"dni\": \"56123456\",\r\n    \"cuil\": \"27561234561\",\r\n    \"sexo\": \"femenino\",\r\n    \"fecha_nacimiento\": \"2020-03-14\",\r\n    \"provincia_nacimiento_id\": 90,\r\n    \"lugar_nacimiento\": \"San Miguel de Tucumán\",\r\n    \"domicilio_calle\": \"Av. Mate de Luna\",\r\n    \"domicilio_numero\": \"2450\",\r\n    \"domicilio_barrio\": \"Centro\"\r\n  },\r\n  \"madre\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Laura\",\r\n    \"dni\": \"30123456\",\r\n    \"telefono\": \"381 555-1234\",\r\n    \"mail\": \"laura.gomez@gmail.com\"\r\n  },\r\n  \"vivienda\": {\r\n    \"personas_en_casa\": 4,\r\n    \"tenencia\": \"alquilada\",\r\n    \"tipo\": \"material\",\r\n    \"distancia_cuadras\": 8\r\n  },\r\n  \"contactos\": [\r\n    {\r\n      \"apellido\": \"Pérez\",\r\n      \"nombres\": \"Rosa\",\r\n      \"parentesco\": \"Abuela\",\r\n      \"telefono\": \"3815556789\"\r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/inscripciones",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "inscripciones"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "91"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"5b-r3S78xyDKDdAHhRaLJbdBGVOnPs\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 02:52:08 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": [\n    \"Repitente tiene que ser true o false\"\n  ],\n  \"error\": \"Bad Request\",\n  \"statusCode\": 400\n}"
+            },
+            {
+              "name": "400-Teléfono con letras",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"grado_id\": 2,\r\n  \"ciclo_lectivo\": 2026,\r\n  \"repitente\": false,\r\n  \"cantidad_hermanos\": 1,\r\n  \"cargada_por_id\": 3,\r\n  \"responsable\": \"madre\",\r\n  \"alumno\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Valentina\",\r\n    \"dni\": \"56123456\",\r\n    \"cuil\": \"27561234561\",\r\n    \"sexo\": \"femenino\",\r\n    \"fecha_nacimiento\": \"2020-03-14\",\r\n    \"provincia_nacimiento_id\": 90,\r\n    \"lugar_nacimiento\": \"San Miguel de Tucumán\",\r\n    \"domicilio_calle\": \"Av. Mate de Luna\",\r\n    \"domicilio_numero\": \"2450\",\r\n    \"domicilio_barrio\": \"Centro\"\r\n  },\r\n  \"madre\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Laura\",\r\n    \"dni\": \"30123456\",\r\n    \"telefono\": \"381 555 ABCD\",\r\n    \"mail\": \"laura.gomez@gmail.com\"\r\n  },\r\n  \"vivienda\": {\r\n    \"personas_en_casa\": 4,\r\n    \"tenencia\": \"alquilada\",\r\n    \"tipo\": \"material\",\r\n    \"distancia_cuadras\": 8\r\n  },\r\n  \"contactos\": [\r\n    {\r\n      \"apellido\": \"Pérez\",\r\n      \"nombres\": \"Rosa\",\r\n      \"parentesco\": \"Abuela\",\r\n      \"telefono\": \"3815556789\"\r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/inscripciones",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "inscripciones"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "117"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"75-vjCpNXOICS0lGjxOuyYk/18AT8o\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 02:53:11 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": [\n    \"madre.El teléfono solo puede tener números, espacios y + - /\"\n  ],\n  \"error\": \"Bad Request\",\n  \"statusCode\": 400\n}"
+            },
+            {
+              "name": "400-Teléfono corto",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"grado_id\": 2,\r\n  \"ciclo_lectivo\": 2026,\r\n  \"repitente\": false,\r\n  \"cantidad_hermanos\": 1,\r\n  \"cargada_por_id\": 3,\r\n  \"responsable\": \"madre\",\r\n  \"alumno\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Valentina\",\r\n    \"dni\": \"56123456\",\r\n    \"cuil\": \"27561234561\",\r\n    \"sexo\": \"femenino\",\r\n    \"fecha_nacimiento\": \"2020-03-14\",\r\n    \"provincia_nacimiento_id\": 90,\r\n    \"lugar_nacimiento\": \"San Miguel de Tucumán\",\r\n    \"domicilio_calle\": \"Av. Mate de Luna\",\r\n    \"domicilio_numero\": \"2450\",\r\n    \"domicilio_barrio\": \"Centro\"\r\n  },\r\n  \"madre\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Laura\",\r\n    \"dni\": \"30123456\",\r\n    \"telefono\": \"381 55\",\r\n    \"mail\": \"laura.gomez@gmail.com\"\r\n  },\r\n  \"vivienda\": {\r\n    \"personas_en_casa\": 4,\r\n    \"tenencia\": \"alquilada\",\r\n    \"tipo\": \"material\",\r\n    \"distancia_cuadras\": 8\r\n  },\r\n  \"contactos\": [\r\n    {\r\n      \"apellido\": \"Pérez\",\r\n      \"nombres\": \"Rosa\",\r\n      \"parentesco\": \"Abuela\",\r\n      \"telefono\": \"3815556789\"\r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/inscripciones",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "inscripciones"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "111"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"6f-wptJgESjgT80QJkJlJXCUlJXsoI\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 02:54:08 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": [\n    \"madre.Ingresá un teléfono completo (7 dígitos o más)\"\n  ],\n  \"error\": \"Bad Request\",\n  \"statusCode\": 400\n}"
+            },
+            {
+              "name": "400-Mail incompleto",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"grado_id\": 2,\r\n  \"ciclo_lectivo\": 2026,\r\n  \"repitente\": false,\r\n  \"cantidad_hermanos\": 1,\r\n  \"cargada_por_id\": 3,\r\n  \"responsable\": \"madre\",\r\n  \"alumno\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Valentina\",\r\n    \"dni\": \"56123456\",\r\n    \"cuil\": \"27561234561\",\r\n    \"sexo\": \"femenino\",\r\n    \"fecha_nacimiento\": \"2020-03-14\",\r\n    \"provincia_nacimiento_id\": 90,\r\n    \"lugar_nacimiento\": \"San Miguel de Tucumán\",\r\n    \"domicilio_calle\": \"Av. Mate de Luna\",\r\n    \"domicilio_numero\": \"2450\",\r\n    \"domicilio_barrio\": \"Centro\"\r\n  },\r\n  \"madre\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Laura\",\r\n    \"dni\": \"30123456\",\r\n    \"telefono\": \"381 555-1234\",\r\n    \"mail\": \"laura@gmail\"\r\n  },\r\n  \"vivienda\": {\r\n    \"personas_en_casa\": 4,\r\n    \"tenencia\": \"alquilada\",\r\n    \"tipo\": \"material\",\r\n    \"distancia_cuadras\": 8\r\n  },\r\n  \"contactos\": [\r\n    {\r\n      \"apellido\": \"Pérez\",\r\n      \"nombres\": \"Rosa\",\r\n      \"parentesco\": \"Abuela\",\r\n      \"telefono\": \"3815556789\"\r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/inscripciones",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "inscripciones"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "113"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"71-IVHjrRrnKi6I/hGDgQHUnI5gMSI\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 02:54:47 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": [\n    \"madre.Revisá el mail: tiene que ser como nombre@gmail.com\"\n  ],\n  \"error\": \"Bad Request\",\n  \"statusCode\": 400\n}"
+            },
+            {
+              "name": "400-Una sola persona en la casa",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"grado_id\": 2,\r\n  \"ciclo_lectivo\": 2026,\r\n  \"repitente\": false,\r\n  \"cantidad_hermanos\": 1,\r\n  \"cargada_por_id\": 3,\r\n  \"responsable\": \"madre\",\r\n  \"alumno\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Valentina\",\r\n    \"dni\": \"56123456\",\r\n    \"cuil\": \"27561234561\",\r\n    \"sexo\": \"femenino\",\r\n    \"fecha_nacimiento\": \"2020-03-14\",\r\n    \"provincia_nacimiento_id\": 90,\r\n    \"lugar_nacimiento\": \"San Miguel de Tucumán\",\r\n    \"domicilio_calle\": \"Av. Mate de Luna\",\r\n    \"domicilio_numero\": \"2450\",\r\n    \"domicilio_barrio\": \"Centro\"\r\n  },\r\n  \"madre\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Laura\",\r\n    \"dni\": \"30123456\",\r\n    \"telefono\": \"381 555-1234\",\r\n    \"mail\": \"laura.gomez@gmail.com\"\r\n  },\r\n  \"vivienda\": {\r\n    \"personas_en_casa\": 1,\r\n    \"tenencia\": \"alquilada\",\r\n    \"tipo\": \"material\",\r\n    \"distancia_cuadras\": 8\r\n  },\r\n  \"contactos\": [\r\n    {\r\n      \"apellido\": \"Pérez\",\r\n      \"nombres\": \"Rosa\",\r\n      \"parentesco\": \"Abuela\",\r\n      \"telefono\": \"3815556789\"\r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/inscripciones",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "inscripciones"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "120"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"78-0m7aoWgvZL4y9Tse1BBXN+8XM+0\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 02:55:46 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": [\n    \"vivienda.Tienen que ser entre 2 y 30 personas, contando al alumno\"\n  ],\n  \"error\": \"Bad Request\",\n  \"statusCode\": 400\n}"
+            },
+            {
+              "name": "400-Sin contactos",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"grado_id\": 2,\r\n  \"ciclo_lectivo\": 2026,\r\n  \"repitente\": false,\r\n  \"cantidad_hermanos\": 1,\r\n  \"cargada_por_id\": 3,\r\n  \"responsable\": \"madre\",\r\n  \"alumno\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Valentina\",\r\n    \"dni\": \"56123456\",\r\n    \"cuil\": \"27561234561\",\r\n    \"sexo\": \"femenino\",\r\n    \"fecha_nacimiento\": \"2020-03-14\",\r\n    \"provincia_nacimiento_id\": 90,\r\n    \"lugar_nacimiento\": \"San Miguel de Tucumán\",\r\n    \"domicilio_calle\": \"Av. Mate de Luna\",\r\n    \"domicilio_numero\": \"2450\",\r\n    \"domicilio_barrio\": \"Centro\"\r\n  },\r\n  \"madre\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Laura\",\r\n    \"dni\": \"30123456\",\r\n    \"telefono\": \"381 555-1234\",\r\n    \"mail\": \"laura.gomez@gmail.com\"\r\n  },\r\n  \"vivienda\": {\r\n    \"personas_en_casa\": 2,\r\n    \"tenencia\": \"alquilada\",\r\n    \"tipo\": \"material\",\r\n    \"distancia_cuadras\": 8\r\n  },\r\n  \"contactos\": []\r\n  \r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/inscripciones",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "inscripciones"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "96"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"60-eoLDvyuYmFRJ/46kHkef77X8v+A\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 02:58:00 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": [\n    \"Cargá al menos un contacto de emergencia\"\n  ],\n  \"error\": \"Bad Request\",\n  \"statusCode\": 400\n}"
+            },
+            {
+              "name": "400-Contacto sin teléfono",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"grado_id\": 2,\r\n  \"ciclo_lectivo\": 2026,\r\n  \"repitente\": false,\r\n  \"cantidad_hermanos\": 1,\r\n  \"cargada_por_id\": 3,\r\n  \"responsable\": \"madre\",\r\n  \"alumno\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Valentina\",\r\n    \"dni\": \"56123456\",\r\n    \"cuil\": \"27561234561\",\r\n    \"sexo\": \"femenino\",\r\n    \"fecha_nacimiento\": \"2020-03-14\",\r\n    \"provincia_nacimiento_id\": 90,\r\n    \"lugar_nacimiento\": \"San Miguel de Tucumán\",\r\n    \"domicilio_calle\": \"Av. Mate de Luna\",\r\n    \"domicilio_numero\": \"2450\",\r\n    \"domicilio_barrio\": \"Centro\"\r\n  },\r\n  \"madre\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Laura\",\r\n    \"dni\": \"30123456\",\r\n    \"telefono\": \"381 555-1234\",\r\n    \"mail\": \"laura.gomez@gmail.com\"\r\n  },\r\n  \"vivienda\": {\r\n    \"personas_en_casa\": 4,\r\n    \"tenencia\": \"alquilada\",\r\n    \"tipo\": \"material\",\r\n    \"distancia_cuadras\": 8\r\n  },\r\n  \"contactos\": [\r\n    {\r\n      \"apellido\": \"Pérez\",\r\n      \"nombres\": \"Rosa\",\r\n      \"parentesco\": \"Abuela\"\r\n      \r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/inscripciones",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "inscripciones"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "107"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"6b-BBTNyb/5mt35IxoUYV9ArmeaX8I\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 03:06:48 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": [\n    \"contactos.0.El teléfono del contacto es obligatorio\"\n  ],\n  \"error\": \"Bad Request\",\n  \"statusCode\": 400\n}"
+            },
+            {
+              "name": "400-Campo que no existe",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"grado_id\": 2,\r\n  \"id\":5,\r\n  \"ciclo_lectivo\": 2026,\r\n  \"repitente\": false,\r\n  \"cantidad_hermanos\": 1,\r\n  \"cargada_por_id\": 3,\r\n  \"responsable\": \"madre\",\r\n  \"alumno\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Valentina\",\r\n    \"dni\": \"56123456\",\r\n    \"cuil\": \"27561234561\",\r\n    \"sexo\": \"femenino\",\r\n    \"fecha_nacimiento\": \"2020-03-14\",\r\n    \"provincia_nacimiento_id\": 90,\r\n    \"lugar_nacimiento\": \"San Miguel de Tucumán\",\r\n    \"domicilio_calle\": \"Av. Mate de Luna\",\r\n    \"domicilio_numero\": \"2450\",\r\n    \"domicilio_barrio\": \"Centro\"\r\n  },\r\n  \"madre\": {\r\n    \"apellido\": \"Gómez\",\r\n    \"nombres\": \"Laura\",\r\n    \"dni\": \"30123456\",\r\n    \"telefono\": \"381 555-1234\",\r\n    \"mail\": \"laura.gomez@gmail.com\"\r\n  },\r\n  \"vivienda\": {\r\n    \"personas_en_casa\": 4,\r\n    \"tenencia\": \"alquilada\",\r\n    \"tipo\": \"material\",\r\n    \"distancia_cuadras\": 8\r\n  },\r\n  \"contactos\": [\r\n    {\r\n      \"apellido\": \"Pérez\",\r\n      \"nombres\": \"Rosa\",\r\n      \"parentesco\": \"Abuela\",\r\n      \"telefono\": \"3815556789\"\r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/inscripciones",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "inscripciones"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "83"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"53-qMkg1W7Co+sisELD7fyOGixl8gQ\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 03:08:02 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": [\n    \"property id should not exist\"\n  ],\n  \"error\": \"Bad Request\",\n  \"statusCode\": 400\n}"
             }
           ]
         },
@@ -977,7 +1817,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{}",
+              "raw": "{\r\n  \"titulo\": \"Acto del Día de la Bandera\",\r\n  \"descripcion\": \"Invitamos a las familias al acto del 20 de junio.\",\r\n  \"contenido\": \"El acto se realiza el 20 de junio a las 10 en el patio de la escuela.\",\r\n  \"imagen_url\": \"https://picsum.photos/800/400\",\r\n  \"categoria_id\": 2,\r\n  \"autor_id\": 1\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1054,6 +1894,426 @@
               ],
               "cookie": [],
               "body": "This action adds a new noticia"
+            },
+            {
+              "name": "201-noticia-valida",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"titulo\": \"Acto del Día de la Bandera\",\r\n  \"descripcion\": \"Invitamos a las familias al acto del 20 de junio.\",\r\n  \"contenido\": \"El acto se realiza el 20 de junio a las 10 en el patio de la escuela.\",\r\n  \"imagen_url\": \"https://picsum.photos/800/400\",\r\n  \"categoria_id\": 2,\r\n  \"autor_id\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/noticias",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "noticias"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "html",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/html; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "30"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1e-94ZTigXBr74otmjQnmySo+ktK+M\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 02:16:53 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "This action adds a new noticia"
+            },
+            {
+              "name": "400-titulo-corto",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"titulo\": \"Acto\",\r\n  \"descripcion\": \"Invitamos a las familias al acto del 20 de junio.\",\r\n  \"contenido\": \"El acto se realiza el 20 de junio a las 10 en el patio de la escuela.\",\r\n  \"imagen_url\": \"https://picsum.photos/800/400\",\r\n  \"categoria_id\": 2,\r\n  \"autor_id\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/noticias",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "noticias"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "html",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "101"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"65-ck2Ps5on1S+t/QVTOSmb5Jr/usQ\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 02:22:01 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\"message\":[\"El título debe tener entre 5 y 100 caracteres\"],\"error\":\"Bad Request\",\"statusCode\":400}"
+            },
+            {
+              "name": "400-resumen-vacio-con-espacios",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"titulo\": \"Acto del Día de la Bandera\",\r\n  \"descripcion\": \"   \",\r\n  \"contenido\": \"El acto se realiza el 20 de junio a las 10 en el patio de la escuela.\",\r\n  \"imagen_url\": \"https://picsum.photos/800/400\",\r\n  \"categoria_id\": 2,\r\n  \"autor_id\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/noticias",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "noticias"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "html",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "75"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"4b-pUSwFulzYE3XKgQ5bbDgOqYJdi4\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 02:27:50 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\"message\":[\"Completá el resumen\"],\"error\":\"Bad Request\",\"statusCode\":400}"
+            },
+            {
+              "name": "400-categoria-como-texto",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"titulo\": \"Acto del Día de la Bandera\",\r\n  \"descripcion\": \"Invitamos a las familias al acto del 20 de junio.\",\r\n  \"contenido\": \"El acto se realiza el 20 de junio a las 10 en el patio de la escuela.\",\r\n  \"imagen_url\": \"https://picsum.photos/800/400\",\r\n  \"categoria_id\": \"Actividades\",\r\n  \"autor_id\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/noticias",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "noticias"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "html",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "106"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"6a-5vqwYKF62VnBs/NQBDVY/UtuGZ4\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 02:31:53 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\"message\":[\"La categoría tiene que ser el id de una categoría\"],\"error\":\"Bad Request\",\"statusCode\":400}"
+            },
+            {
+              "name": "400-imagen-sin-https",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"titulo\": \"Acto del Día de la Bandera\",\r\n  \"descripcion\": \"Invitamos a las familias al acto del 20 de junio.\",\r\n  \"contenido\": \"El acto se realiza el 20 de junio a las 10 en el patio de la escuela.\",\r\n  \"imagen_url\": \"http://picsum.photos/800/400\",\r\n  \"categoria_id\": 2,\r\n  \"autor_id\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/noticias",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "noticias"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "html",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "115"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"73-MvA7xoLsafv1MCu42sah/yU09mc\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 02:32:52 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\"message\":[\"La imagen debe tener una dirección que empiece con https://\"],\"error\":\"Bad Request\",\"statusCode\":400}"
+            },
+            {
+              "name": "400-publicada-como-texto",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"titulo\": \"Acto del Día de la Bandera\",\r\n  \"descripcion\": \"Invitamos a las familias al acto del 20 de junio.\",\r\n  \"contenido\": \"El acto se realiza el 20 de junio a las 10 en el patio de la escuela.\",\r\n  \"imagen_url\": \"https://picsum.photos/800/400\",\r\n  \"categoria_id\": 2,\r\n  \"autor_id\": 1,\r\n  \"publicada\": \"si\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/noticias",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "noticias"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "html",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "91"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"5b-0fRcDaeQ88A1Gl0Eo/4rkBEv/B4\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 02:33:55 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\"message\":[\"Publicada tiene que ser true o false\"],\"error\":\"Bad Request\",\"statusCode\":400}"
+            },
+            {
+              "name": "400-campo-desconocido",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"titulo\": \"Acto del Día de la Bandera\",\r\n  \"descripcion\": \"Invitamos a las familias al acto del 20 de junio.\",\r\n  \"contenido\": \"El acto se realiza el 20 de junio a las 10 en el patio de la escuela.\",\r\n  \"imagen_url\": \"https://picsum.photos/800/400\",\r\n  \"categoria_id\": 2,\r\n  \"autor_id\": 1,\r\n  \"fecha\": \"2026-06-20\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/noticias",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "noticias"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "html",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "86"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"56-Q/Avzy7q8D8JYo58iWnOG/ZH52Q\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 02:34:48 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\"message\":[\"property fecha should not exist\"],\"error\":\"Bad Request\",\"statusCode\":400}"
             }
           ]
         },
@@ -1064,7 +2324,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{}",
+              "raw": "{\r\n    \"publicada\": true\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1131,6 +2391,67 @@
                 {
                   "key": "Date",
                   "value": "Mon, 23 Nov 2026 22:28:18 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "This action updates a #1 noticia"
+            },
+            {
+              "name": "200-actualizacion-valida",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"publicada\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/noticias/1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "noticias",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "html",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/html; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "32"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"20-ejslsOFTeHXZg/7t2O1243d37KY\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 02:38:19 GMT"
                 },
                 {
                   "key": "Connection",
@@ -1378,7 +2699,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{}",
+              "raw": "{\"tipo_evento_id\": 1, \"usuario_id\": 3}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1455,6 +2776,306 @@
               ],
               "cookie": [],
               "body": "This action adds a new registroAcceso"
+            },
+            {
+              "name": "201-ingreso-de-cuenta",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"tipo_evento_id\": 1, \"usuario_id\": 3}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/registro-accesos",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "registro-accesos"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "html",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/html; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "37"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"25-j+aJZQcZY3mrWEvBZ0TYhVrxiSY\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 02:43:07 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "This action adds a new registroAcceso"
+            },
+            {
+              "name": "201-intento-fallido-usuario-inexistente",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"tipo_evento_id\": 2, \"usuario_ingresado\": \"maestra9\", \"detalle\": \"El usuario no existe\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/registro-accesos",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "registro-accesos"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "html",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/html; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "37"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"25-j+aJZQcZY3mrWEvBZ0TYhVrxiSY\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 02:44:23 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "This action adds a new registroAcceso"
+            },
+            {
+              "name": "400-falta-usuario",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"tipo_evento_id\": 1}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/registro-accesos",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "registro-accesos"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "93"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"5d-5WvfZre52C2fZDBKGdotoDgJWkU\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 02:50:08 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": [\n    \"Indicá usuario_id o usuario_ingresado\"\n  ],\n  \"error\": \"Bad Request\",\n  \"statusCode\": 400\n}"
+            },
+            {
+              "name": "400-usuario-ingresado-vacío",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"tipo_evento_id\": 2, \"usuario_ingresado\": \"   \"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/registro-accesos",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "registro-accesos"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "93"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"5d-5WvfZre52C2fZDBKGdotoDgJWkU\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 02:51:04 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": [\n    \"Indicá usuario_id o usuario_ingresado\"\n  ],\n  \"error\": \"Bad Request\",\n  \"statusCode\": 400\n}"
+            },
+            {
+              "name": "400-tipo-evento-como-texto",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"tipo_evento_id\": \"INGRESO\", \"usuario_id\": 3}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/registro-accesos",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "registro-accesos"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "110"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"6e-de4iqzJNma4IbwPBqjfEYriSI5A\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 24 Nov 2026 02:51:48 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": [\n    \"tipo_evento_id tiene que ser el id de un tipo de evento\"\n  ],\n  \"error\": \"Bad Request\",\n  \"statusCode\": 400\n}"
             }
           ]
         },
