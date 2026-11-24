@@ -6,6 +6,8 @@ import {
   Patch,
   Param,
   Delete,
+  ParseIntPipe,
+  Query,
 } from '@nestjs/common';
 import { NoticiasService } from './noticias.service.js';
 import { CreateNoticiaDto } from './dto/create-noticia.dto.js';
@@ -20,23 +22,29 @@ export class NoticiasController {
     return this.noticiasService.create(createNoticiaDto);
   }
 
+  // GET /noticias trae todas (administración) y
+  // GET /noticias?publicadas=true, solo las del portal.
+  // Lo que llega por la URL es texto: por eso se compara con 'true'
   @Get()
-  findAll() {
-    return this.noticiasService.findAll();
+  findAll(@Query('publicadas') publicadas?: string) {
+    return this.noticiasService.findAll(publicadas === 'true');
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.noticiasService.findOne(+id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.noticiasService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateNoticiaDto: UpdateNoticiaDto) {
-    return this.noticiasService.update(+id, updateNoticiaDto);
+  update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() updateNoticiaDto: UpdateNoticiaDto,
+  ) {
+    return this.noticiasService.update(id, updateNoticiaDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.noticiasService.remove(+id);
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.noticiasService.remove(id);
   }
 }
