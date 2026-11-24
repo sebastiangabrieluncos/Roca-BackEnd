@@ -1,24 +1,29 @@
 import { Injectable } from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service.js';
 
+// Las listas fijas de los formularios, leídas de la base.
+// Son de solo lectura: las carga roca_db.sql.
 @Injectable()
 export class CatalogosService {
+  constructor(private readonly prisma: PrismaService) {}
+
   listarGrados() {
-    return 'Devuelve los grados';
+    return this.prisma.grado.findMany({ orderBy: { orden: 'asc' } });
   }
 
   listarRoles() {
-    return 'Devuelve los roles';
+    return this.prisma.rol.findMany({ orderBy: { id: 'asc' } });
   }
 
   listarProvincias() {
-    return 'Devuelve las provincias';
+    return this.prisma.provincia.findMany({ orderBy: { nombre: 'asc' } });
   }
 
   listarCategorias() {
-    return 'Devuelve las categorías de noticias';
+    return this.prisma.categoria_noticia.findMany({ orderBy: { id: 'asc' } });
   }
 
   listarTiposEvento() {
-    return 'Devuelve los tipos de evento del registro de accesos';
+    return this.prisma.tipo_evento.findMany({ orderBy: { id: 'asc' } });
   }
 }
