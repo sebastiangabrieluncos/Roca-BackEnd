@@ -160,6 +160,31 @@ export class InscripcionesService {
     return this.prisma.inscripcion.delete({ where: { id } });
   }
 
+  // Lo que muestra el tablero del front: el total del ciclo y,
+  // por cada grado, cuántos inscriptos hay y cuántos de cada sexo
+  async estadisticas(ciclo: number) {
+    const grados = await this.prisma.grado.findMany({
+      orderBy: { orden: 'asc' },
+    });
+    const inscripciones = await this.prisma.inscripcion.findMany({
+      where: { ciclo_lectivo: ciclo },
+      select: { grado_id: true, alumno: { select: { sexo: true } } },
+    });
+
+    const porGrado = grados.map((grado) => {
+      const delGrado = inscripciones.filter((i) => i.grado_id === grado.id);
+      return {
+        grado: grado.nombre,
+        total: delGrado.length,
+        femenino: delGrado.filter((i) => i.alumno.sexo === 'femenino').length,
+        masculino: delGrado.filter((i) => i.alumno.sexo === 'masculino').length,
+        x: delGrado.filter((i) => i.alumno.sexo === 'x').length,
+      };
+    });
+
+    return { ciclo, total: inscripciones.length, por_grado: porGrado };
+  }
+
   // Las reglas de la ficha que dependen de la base o de otros datos
   private async validarFicha(dto: Ficha, usuarioId: number) {
     const grado = await this.prisma.grado.findUnique({
