@@ -28,6 +28,11 @@ export class InscripcionesController {
     return this.inscripcionesService.findAll(filtros);
   }
 
+  @Get('estadisticas')
+  estadisticas(@Query('ciclo', ParseIntPipe) ciclo: number) {
+    return this.inscripcionesService.estadisticas(ciclo);
+  }
+
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number) {
     return this.inscripcionesService.findOne(id);
