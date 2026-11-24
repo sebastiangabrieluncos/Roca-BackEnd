@@ -10,29 +10,29 @@ datasource db {
 
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model alumno {
-  id                      Int           @id @default(autoincrement())
-  apellido                String        @db.VarChar(60)
-  nombres                 String        @db.VarChar(60)
-  dni                     String        @unique @db.VarChar(8)
-  cuil                    String?       @unique @db.VarChar(11)
+  id                      Int            @id @default(autoincrement())
+  apellido                String         @db.VarChar(60)
+  nombres                 String         @db.VarChar(60)
+  dni                     String         @unique @db.VarChar(8)
+  cuil                    String?        @unique @db.VarChar(11)
   sexo                    sexo
-  fecha_nacimiento        DateTime      @db.Date
-  acta_nacimiento         String?       @db.VarChar(30)
-  provincia_nacimiento_id Int?          @db.SmallInt
-  lugar_nacimiento        String?       @db.VarChar(100)
-  domicilio_calle         String        @db.VarChar(80)
-  domicilio_numero        String        @db.VarChar(5)
-  domicilio_piso_depto    String?       @db.VarChar(20)
-  domicilio_barrio        String?       @db.VarChar(60)
-  provincia               provincia?    @relation(fields: [provincia_nacimiento_id], references: [id], onDelete: Restrict, onUpdate: NoAction)
-  alumno_tutor            alumno_tutor?
+  fecha_nacimiento        DateTime       @db.Date
+  acta_nacimiento         String?        @db.VarChar(30)
+  provincia_nacimiento_id Int?           @db.SmallInt
+  lugar_nacimiento        String?        @db.VarChar(100)
+  domicilio_calle         String         @db.VarChar(80)
+  domicilio_numero        String         @db.VarChar(5)
+  domicilio_piso_depto    String?        @db.VarChar(20)
+  domicilio_barrio        String?        @db.VarChar(60)
+  provincia               provincia?     @relation(fields: [provincia_nacimiento_id], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  alumno_tutor            alumno_tutor[]
   inscripcion             inscripcion[]
 
   @@index([apellido, nombres], map: "idx_alumno_apellido")
 }
 
 model alumno_tutor {
-  alumno_id      Int           @unique(map: "uq_un_responsable", where: raw("es_responsable"))
+  alumno_id      Int
   tutor_id       Int
   vinculo        vinculo_tutor
   es_responsable Boolean       @default(false)
@@ -41,6 +41,7 @@ model alumno_tutor {
 
   @@id([alumno_id, tutor_id])
   @@unique([alumno_id, vinculo], map: "uq_alumno_vinculo")
+  @@unique([alumno_id], map: "uq_un_responsable", where: raw("es_responsable"))
 }
 
 model categoria_noticia {

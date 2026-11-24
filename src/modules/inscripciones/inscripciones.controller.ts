@@ -6,10 +6,13 @@ import {
   Patch,
   Param,
   Delete,
+  ParseIntPipe,
+  Query,
 } from '@nestjs/common';
 import { InscripcionesService } from './inscripciones.service.js';
 import { CreateInscripcionDto } from './dto/create-inscripcion.dto.js';
 import { UpdateInscripcionDto } from './dto/update-inscripcion.dto.js';
+import { FiltrosInscripcionDto } from './dto/filtros-inscripcion.dto.js';
 
 @Controller('inscripciones')
 export class InscripcionesController {
@@ -21,25 +24,25 @@ export class InscripcionesController {
   }
 
   @Get()
-  findAll() {
-    return this.inscripcionesService.findAll();
+  findAll(@Query() filtros: FiltrosInscripcionDto) {
+    return this.inscripcionesService.findAll(filtros);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.inscripcionesService.findOne(+id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.inscripcionesService.findOne(id);
   }
 
   @Patch(':id')
   update(
-    @Param('id') id: string,
+    @Param('id', ParseIntPipe) id: number,
     @Body() updateInscripcionDto: UpdateInscripcionDto,
   ) {
-    return this.inscripcionesService.update(+id, updateInscripcionDto);
+    return this.inscripcionesService.update(id, updateInscripcionDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.inscripcionesService.remove(+id);
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.inscripcionesService.remove(id);
   }
 }
