@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { CreateInscripcioneDto } from './dto/create-inscripcione.dto.js';
-import { UpdateInscripcioneDto } from './dto/update-inscripcione.dto.js';
+import { CreateInscripcionDto } from './dto/create-inscripcion.dto.js';
+import { UpdateInscripcionDto } from './dto/update-inscripcion.dto.js';
 
 @Injectable()
 export class InscripcionesService {
-  create(createInscripcioneDto: CreateInscripcioneDto) {
-    return 'This action adds a new inscripcione';
+  create(createInscripcionDto: CreateInscripcionDto) {
+    return 'This action adds a new inscripcion';
   }
 
   findAll() {
@@ -13,14 +13,14 @@ export class InscripcionesService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} inscripcione`;
+    return `This action returns a #${id} inscripcion`;
   }
 
-  update(id: number, updateInscripcioneDto: UpdateInscripcioneDto) {
-    return `This action updates a #${id} inscripcione`;
+  update(id: number, updateInscripcionDto: UpdateInscripcionDto) {
+    return `This action updates a #${id} inscripcion`;
   }
 
   remove(id: number) {
-    return `This action removes a #${id} inscripcione`;
+    return `This action removes a #${id} inscripcion`;
   }
 }

@@ -8,16 +8,16 @@ import {
   Delete,
 } from '@nestjs/common';
 import { InscripcionesService } from './inscripciones.service.js';
-import { CreateInscripcioneDto } from './dto/create-inscripcione.dto.js';
-import { UpdateInscripcioneDto } from './dto/update-inscripcione.dto.js';
+import { CreateInscripcionDto } from './dto/create-inscripcion.dto.js';
+import { UpdateInscripcionDto } from './dto/update-inscripcion.dto.js';
 
 @Controller('inscripciones')
 export class InscripcionesController {
   constructor(private readonly inscripcionesService: InscripcionesService) {}
 
   @Post()
-  create(@Body() createInscripcioneDto: CreateInscripcioneDto) {
-    return this.inscripcionesService.create(createInscripcioneDto);
+  create(@Body() createInscripcionDto: CreateInscripcionDto) {
+    return this.inscripcionesService.create(createInscripcionDto);
   }
 
   @Get()
@@ -33,9 +33,9 @@ export class InscripcionesController {
   @Patch(':id')
   update(
     @Param('id') id: string,
-    @Body() updateInscripcioneDto: UpdateInscripcioneDto,
+    @Body() updateInscripcionDto: UpdateInscripcionDto,
   ) {
-    return this.inscripcionesService.update(+id, updateInscripcioneDto);
+    return this.inscripcionesService.update(+id, updateInscripcionDto);
   }
 
   @Delete(':id')
