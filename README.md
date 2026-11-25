@@ -127,7 +127,7 @@ Importar postman/Roca-API.postman_collection.json. La variable baseUrl apunta a 
 
 ## Cómo trabajamos
 
-- main tiene lo entregado al cierre de cada TP; dev es la rama de integración y la rama por defecto.
+- `dev` es la rama por defecto y tiene la versión final del back; `main` quedó con la estructura inicial del proyecto.
 - Una rama por tarea, desde dev: feature/, fix/, refactor/ o docs/.
 - Commits con el formato tipo: qué cambia y para qué.
 - Todo entra a dev por Pull Request, con la revisión del otro integrante.
