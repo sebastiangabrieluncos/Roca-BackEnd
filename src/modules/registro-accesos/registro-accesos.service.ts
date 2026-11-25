@@ -48,6 +48,27 @@ export class RegistroAccesosService {
     });
     return { ...registro, id: Number(registro.id) };
   }
+// Para que usuarios y auth dejen asentado un evento por su código,
+  // por ejemplo registrar('INGRESO', { usuario_id: 3 })
+  async registrar(
+    codigo: string,
+    datos: {
+      usuario_id?: number;
+      usuario_ingresado?: string;
+      detalle?: string;
+    },
+  ) {
+    const tipo = await this.prisma.tipo_evento.findUnique({
+      where: { codigo },
+    });
+    if (!tipo) {
+      throw new Error(`Falta el tipo de evento ${codigo} en la base`);
+    }
+
+    await this.prisma.registro_acceso.create({
+      data: { tipo_evento_id: tipo.id, ...datos },
+    });
+  }
 
   // Del más nuevo al más viejo, hasta 500, como el registro del front
   async findAll(filtros: FiltrosRegistroDto) {
