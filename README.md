@@ -33,6 +33,7 @@ Copiar .env.example como .env y completar la contraseña de PostgreSQL:
 | PORT | Puerto de la API (4000) |
 | DATABASE_URL | Conexión a PostgreSQL |
 | API_BASE_URL | Dirección base de la API |
+| `JWT_SECRET` | Clave con la que la API firma los tokens del login |
 
 ## Base de datos
 
@@ -109,6 +110,16 @@ docs/                 diagrama de la base
 | secretario | secretario123 | Secretaría |
 | maestra1 | maestra123 | Maestra de 1° |
 | hcarrizo | maestro123 | Maestro con la cuenta desactivada |
+
+## Autenticación
+
+`POST /auth/login` recibe el usuario (o el mail) y la contraseña:
+
+    { "usuario": "admin", "password": "admin123" }
+
+Si son correctos, devuelve un `access_token` (JWT, dura 1 hora) y los datos de la cuenta, sin la contraseña. Cada intento, bueno o malo, queda en el registro de accesos.
+
+No hay una ruta de registro público: en la escuela, las cuentas las crea la vicedirección con `POST /usuarios`, y esa es la única ruta para crear cuentas, como pide el TP 12. Las contraseñas se guardan hasheadas con bcrypt.
 
 ## Postman
 
