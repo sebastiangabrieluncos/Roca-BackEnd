@@ -48,7 +48,7 @@ export class RegistroAccesosService {
     });
     return { ...registro, id: Number(registro.id) };
   }
-// Para que usuarios y auth dejen asentado un evento por su código,
+  // Para que usuarios y auth dejen asentado un evento por su código,
   // por ejemplo registrar('INGRESO', { usuario_id: 3 })
   async registrar(
     codigo: string,
