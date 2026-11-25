@@ -5,8 +5,7 @@ import { RegistroAccesosController } from './registro-accesos.controller.js';
 @Module({
   controllers: [RegistroAccesosController],
   providers: [RegistroAccesosService],
-    // Lo usan usuarios y auth para registrar sus eventos
+  // Lo usan usuarios y auth para registrar sus eventos
   exports: [RegistroAccesosService],
-
 })
 export class RegistroAccesosModule {}
