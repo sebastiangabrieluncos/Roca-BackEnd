@@ -207,8 +207,11 @@ export class InscripcionesService {
     const usuario = await this.prisma.usuario.findUnique({
       where: { id: usuarioId },
     });
-    if (!usuario) {
-      throw new BadRequestException(`No existe el usuario ${usuarioId}`);
+    // Quien carga o modifica la ficha tiene que ser una cuenta activa
+    if (!usuario || !usuario.activo) {
+      throw new BadRequestException(
+        `El usuario ${usuarioId} no existe o tiene la cuenta desactivada`,
+      );
     }
 
     // El alumno: la fecha de nacimiento, la edad en el ciclo y el CUIL
